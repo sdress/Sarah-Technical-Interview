@@ -28,18 +28,90 @@
 
 
             <!-- Tasks 1 and 2 -->
-            print(simpsons_episodes)
+            <!-- print(simpsons_episodes) -->
 
+            ep_list = []
+            
+            for k,v in simpsons_episodes.items():
+                try:
+                    if float(v['imdb_rating']) > float(9.0):
+                        ep_list.append(k)
+                        <!-- print(f"Episode Title: {k}, {v['views_title']} Viewers, {v['imdb_rating']} IMDB Rating") -->
+                    <!-- print('true') -->
+                    <!-- print(v['imdb_rating']) -->
+                except ValueError:
+                    <!-- excluding entries with invalid/missing data -->
+                    <!-- print(k,v) -->
+                    pass
+                except:
+                    print("An error has occurred")
+            
+            <!-- TODO: order episodes by viewers -->
+            <!-- print(ep_list) -->
+
+            sorted_keys = sorted(ep_list, key=lambda x: (simpsons_episodes[x]['views_title']), reverse=True)
+            for key in sorted_keys:
+                episode = simpsons_episodes[key]
+                views = "{:,}".format(episode['views_title'])
+                rating = episode['imdb_rating']
+                print(f"{key}: {views} Viewers, {rating} IMDB Rating")
+
+            print(12*'* ')
 
             <!-- Tasks 3 & 4 -->
             import datetime
-
+            
+            now = datetime.datetime.today()
+            <!-- print(f"today = {now.strftime('%x')}") -->
+            prior = now - datetime.timedelta(days=21)
+            print(f"Three weeks ago today: {prior.strftime('%x')}")
+            
+            print(12*'* ')
 
             <!-- Tasks 5 & 6 -->
 
+            keys_list = list(provider_versions.keys())
+            <!-- print('keys_list = ', keys_list) -->
 
-            <!-- Task 7 -->
+            <!-- joined_str = ",".join(keys_list)
+            print(joined_str) -->
 
+            <!-- print(provider_versions.items()) -->
+            <!-- print(provider_versions[keys_list[0]]) -->
+
+            for i in range(len(keys_list)):
+                if i == 0:
+                    print(f"{keys_list[0]}: Original")
+                    <!-- version = keys_list[0]
+                    joined_str = ", ".join( list(provider_versions[key].keys()) )
+                    print(f"{keys_list[0]}: {joined_str}") -->
+                elif ( provider_versions[keys_list[i]] != provider_versions[keys_list[i-1]] ):
+                    set1 = set(provider_versions[keys_list[i]].items())
+                    set2 = set(provider_versions[keys_list[i-1]].items())
+                    diff = dict(set1 - set2)
+                    joined_str = ",".join(diff.keys())
+                    <!-- print(f"set1 = {set1}, set2 = {set2}") -->
+                    print(f"{keys_list[i]}: {joined_str}")
+                    <!-- print(f"{keys_list[i]}: Changes Found") -->
+                else:
+                    print(f"{keys_list[i]}: No Changes Found")
+                
+
+
+            print(12*'* ')
+
+            <!-- Task 7 --> 
+            import csv
+
+            <!-- from https://docs.python.org/3/library/csv.html#csv.Sniffer -->
+            <!-- with open('data_file.csv', newline='') as data_file:
+                dialect = csv.Sniffer().sniff(data_file.read(1024))
+                data_file.seek(0)
+                reader = csv.reader(data_file, dialect) -->
+            
+            print("dialect = csv.Sniffer().sniff(data_file.read(1024))")
+            
+            <!-- other source: https://wellsr.com/python/introduction-to-csv-dialects-with-the-python-csv-module/ -->
         </py-script>
     </section>
 </body>
