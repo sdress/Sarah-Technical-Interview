@@ -1,6 +1,36 @@
-/* TODO: Update Font */
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+color-palette{
+    background-color:rgba(0,81,44);
+}
+
+body{
+    background-image: linear-gradient(rgba(0,81,44),#82e683);
+}
 
 section {
     margin-top: 12px;
     margin-bottom: 8px;
+} 
+
+.container{
+    padding: 4% 2%;
+    margin: 4% 2%;
+    border: 6px solid rgba(255, 0, 0, 0.8);
+    border-radius: 10px;
+    background-color: cornsilk;
+}
+
+.poker-info{
+    background-image: url('amanda-jones-P787-xixGio-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#history_of_poker{
+    background-color: rgba(255, 248, 220,0.85);
+    border-radius: 10px;
+    padding: 2%;
 }
